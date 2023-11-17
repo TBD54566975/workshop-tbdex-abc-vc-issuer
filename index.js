@@ -58,6 +58,18 @@ app.get('/login', (req, res) => {
   res.send(`<a href="https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}">Login with GitHub</a>`)
 })
 
+app.get('/oauth/github/callback', (req, res) => {
+  console.log('WOOOO CALLBACK!!!');
+  const { code } = req.query
+  console.log(code);
+
+  return res.status(302).header("Location", "http://localhost:9000/popup").end()
+})
+
+app.get("/popup", (request, reply) => {
+  return reply.sendFile(`${__dirname}/popup.html`);
+});
+
 // callback URL, after github login
 app.get('/', async (req, res) => {
   const code = req.query.code
