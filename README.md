@@ -15,7 +15,7 @@ Service that issues a TBDeveloper Verifiable Credential using [Github OAuth](htt
 
 # How it works
 
-```
+```mermaid
 sequenceDiagram
 autonumber
 
@@ -36,7 +36,7 @@ I->>A: VC
 [Example Credential](https://jwt.io/#debugger-io?token=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCIsImtpZCI6ImRpZDpkaHQ6dHNtYWRyN3E3N3pwdHA2ZnRqb2twOHRoMXp5ZGFmbzVwczY4ZXk3a3A4cGlwb3E1Y250eSMwIn0.eyJpc3MiOiJkaWQ6ZGh0OnRzbWFkcjdxNzd6cHRwNmZ0am9rcDh0aDF6eWRhZm81cHM2OGV5N2twOHBpcG9xNWNudHkiLCJzdWIiOiJkaWQ6a2V5Ono2TWtwRDROclU5SEFSdWJXc2hrUERESHJnWlBpQ3ZKbmVtRFZnU2g0SFVzYnhqeSIsInZjIjp7IkBjb250ZXh0IjpbImh0dHBzOi8vd3d3LnczLm9yZy8yMDE4L2NyZWRlbnRpYWxzL3YxIl0sInR5cGUiOlsiVmVyaWZpYWJsZUNyZWRlbnRpYWwiLCJUQkRldmVsb3BlckNyZWRlbnRpYWwiXSwiaWQiOiJ1cm46dXVpZDo2YzhiYTNhNy04ZjRlLTQ2YmMtYmU0NC0zYjljN2YxYzE3OTgiLCJpc3N1ZXIiOiJkaWQ6ZGh0OnRzbWFkcjdxNzd6cHRwNmZ0am9rcDh0aDF6eWRhZm81cHM2OGV5N2twOHBpcG9xNWNudHkiLCJpc3N1YW5jZURhdGUiOiIyMDIzLTExLTE5VDAxOjMzOjU4WiIsImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiZGlkOmtleTp6Nk1rcEQ0TnJVOUhBUnViV3Noa1BEREhyZ1pQaUN2Sm5lbURWZ1NoNEhVc2J4ankiLCJ1c2VybmFtZSI6Im1pc3Rlcm1vZSJ9fX0.fiMGpDda_UDvygMBqdn_VcSrsGV97ZziU2o08W9HKU7nq6DTmtxi8dW6kYsxELHM4AERclOYD-shi6xvQdWWDw)
 
 > [!NOTE]
-> jwt.io will say "Invalid Credential" because it doesn't support ES256K or EdDSA:Ed25519 signatures
+> jwt.io will say "Invalid Credential" because it doesn't support `ES256K` or `EdDSA:Ed25519` signatures
 
 
 # Development Prerequisites
