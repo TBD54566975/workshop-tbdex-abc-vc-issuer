@@ -24,7 +24,7 @@ participant A as App
 participant I as Issuer Service
 
 A->>A: Click button to get TBDev VC
-A->>A: Load GH OAuth Popup. Click Allow
+A->>A: Load GH OAuth Popup. Click Authorize
 A->>GH: Verify Login
 GH->>A: Authorization Code
 A->>A: construct JWT with code in payload
