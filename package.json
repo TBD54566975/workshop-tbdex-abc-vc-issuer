@@ -3,12 +3,17 @@
   "name": "y",
   "version": "1.0.0",
   "dependencies": {
+    "@octokit/auth-oauth-user": "^4.0.1",
+    "@octokit/core": "^5.0.1",
     "@web5/common": "0.2.1",
-    "@web5/crypto": "0.2.1",
-    "@web5/dids": "0.2.1",
+    "@web5/credentials": "0.3.1",
+    "@web5/crypto": "0.2.2",
+    "@web5/dids": "0.2.2",
     "cors": "2.8.5",
     "dotenv": "16.3.1",
     "express": "4.18.2",
+    "express-requests-logger": "4.0.0",
+    "jwt-decode": "4.0.0",
     "kysely": "0.26.3",
     "loglevel": "1.8.1",
     "loglevel-plugin-prefix": "0.8.4",
@@ -39,6 +44,6 @@
     "lint": "eslint . --ext .ts --max-warnings 0",
     "lint:fix": "eslint . --ext .ts --fix",
     "server": "npm run clean && npm run compile && node --enable-source-maps dist/main.js",
-    "test": "rimraf tests/compiled && tsc -p tests/tsconfig.json && cp -r ./rules tests/compiled && mocha"
+    "test": "rimraf tests/compiled && tsc -p tests/tsconfig.json && mocha"
   }
 }
