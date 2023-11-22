@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "vc-issuer.fullname" . }}
+  labels:
+    {{- include "vc-issuer.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  serviceName: {{ include "vc-issuer.fullname" . }}
+  selector:
+    matchLabels:
+      {{- include "vc-issuer.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "vc-issuer.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: vc-issuer
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.env.DS_PORT }}
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: LOG_LEVEL
+              value: "{{ .Values.env.LOG_LEVEL }}"
+            - name: HOST
+              value: "{{ .Values.env.HOST }}"
+            - name: PORT
+              value: "{{ .Values.env.PORT }}"
+            - name: GH_OAUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "vc-issuer.fullname" . }}
+                  key: GH_OAUTH_CLIENT_ID
+            - name: GH_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "vc-issuer.fullname" . }}
+                  key: GH_OAUTH_CLIENT_SECRET
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 13 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 13 }}
+      {{- end }}
+      {{- with .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
+        {{- toYaml . | nindent 13 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 13 }}
+      {{- end }}

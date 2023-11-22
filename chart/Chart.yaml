@@ -1,0 +1,7 @@
+apiVersion: v2
+name: tbdex-issuer-server
+description: |
+  A Helm chart for Kubernetes that deploys the TBDex VC Issuer
+home: https://github.com/TBD54566975/workshop-tbdex-abc-vc-issuer
+version: 0.0.1
+appVersion: 0.0.1
