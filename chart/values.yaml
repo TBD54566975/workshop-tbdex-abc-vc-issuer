@@ -1,0 +1,51 @@
+replicaCount: 1
+nameOverride: ''
+fullnameOverride: ''
+
+env:
+  LOG_LEVEL: "info"
+  HOST: "http://localhost"
+  PORT: 9000
+  GH_OAUTH_CLIENT_ID: ""
+  GH_OAUTH_CLIENT_SECRET: ""
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 500Mi
+
+# tolerations:
+# affinity:
+# topologySpreadConstraints:
+# nodeSelector:
+
+customLabels: {}
+
+image:
+  repository: ghcr.io/tbd54566975/workshop-tbdex-abc-vc-issuer
+  tag: main
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 9000
+
+virtualService:
+  enabled: false
+  host: issuer.example.com
+  gateway: istio-system/primary-gateway
+
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  hosts:
+    - host: issuer.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+  # - hosts:
+  #   - issuer.example.com
+  #   secretName: issuer-tls
