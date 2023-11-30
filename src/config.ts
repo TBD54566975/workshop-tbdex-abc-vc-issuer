@@ -22,11 +22,11 @@ export const config: Config = {
   logLevel: (process.env['LOG_LEVEL'] as LogLevelDesc) || 'info',
   host: process.env['HOST'] || 'http://localhost',
   port: parseInt(process.env['PORT'] || '9000'),
-  did: process.env['DID'] ? JSON.parse(process.env['DID']) : await DidDhtMethod.create(),
+  did: process.env['SEC_DID'] ? JSON.parse(process.env['SEC_DID']) : await DidDhtMethod.create(),
   github: {
     oauth: {
-      clientId: process.env['GH_OAUTH_CLIENT_ID'],
-      clientSecret: process.env['GH_OAUTH_CLIENT_SECRET']
+      clientId: process.env['SEC_GH_OAUTH_CLIENT_ID'],
+      clientSecret: process.env['SEC_GH_OAUTH_CLIENT_SECRET']
     }
   }
 }
